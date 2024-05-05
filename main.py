@@ -1,9 +1,10 @@
+# main.py
 import streamlit as st
 from company_info import display_company_info
 from earnings import display_earnings_chart
 from stock_price import display_stock_price_chart
 from financial_statements import display_financial_statements
-# from stock_news import display_stock_news  # Temporarily removed
+from stock_news import display_stock_news  # Importing the new function
 
 # Set page configuration with page title, layout and initial sidebar state
 st.set_page_config(
@@ -35,7 +36,12 @@ with col2:
     display_earnings_chart(ticker)
 
 # Define the second row
-col4 = st.columns(1)[0]  # Adjusted for one column layout since news is removed
+col3, col4 = st.columns(2)
+
+with col3:
+    # Display "Stock News"
+    st.header(f"Latest {ticker} News")
+    display_stock_news(ticker)
 
 with col4:
     # Display "Price Graph (5 Years)" in the main section
