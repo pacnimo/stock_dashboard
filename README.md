@@ -28,15 +28,16 @@ To run this dashboard locally, you'll need Python and several libraries installe
 
 ### Setup
 
-Clone the repository:
-git clone https://github.com/pacnimo/stock_dashboard.git
-cd stock_dashboard
+1. Clone the repository:
+   git clone https://github.com/pacnimo/stock_dashboard.git
+   cd stock_dashboard
 
-Install the required packages:
-pip install streamlit yfinance pandas matplotlib
+2. Install the required packages:
+   pip install streamlit yfinance pandas matplotlib
 
-Run the dashboard:
-streamlit run main.py
+3. Run the dashboard:
+   streamlit run main.py
+
 
 ## Contributions
 
