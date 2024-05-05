@@ -1,20 +1,30 @@
 import yfinance as yf
 import streamlit as st
+import json
+from requests.exceptions import JSONDecodeError
 
 def display_stock_news(ticker):
-    # Fetch the data for the given stock ticker
     stock = yf.Ticker(ticker)
+    try:
+        stock_news = stock.news
+        if not stock_news:  # Check if the news list is empty
+            st.warning('No news items found.')
+            return
+    except JSONDecodeError as e:
+        response = e.response  # Get the requests.Response object
+        st.error("Failed to decode JSON from API response.")
+        st.text("Response content:")
+        st.code(response.text)  # Display the raw response text
+        return
+    except Exception as e:
+        st.error(f"An error occurred: {str(e)}")
+        return
 
-    # Retrieve news related to the stock
-    stock_news = stock.news
-
-    # Display each news item in the Streamlit app
     for news in stock_news:
-        st.subheader(news.get('title', 'No title available'))  # Safely get the news headline
-        st.write("Publisher:", news.get('publisher', 'No publisher available'))  # Safely get the news publisher
-        st.write("Link:", news.get('link', 'No link available'))  # Provide the link to the full news
-        # Attempt to print the publication date; handle UNIX timestamp conversion if present
-        date = news.get('providerPublishTime', None)
+        st.subheader(news.get('title', 'No title available'))
+        st.write("Publisher:", news.get('publisher', 'No publisher available'))
+        st.write("Link:", news.get('link', 'No link available'))
+        date = news.get('providerPublishTime')
         if date:
             from datetime import datetime
             date = datetime.fromtimestamp(date).strftime('%Y-%m-%d %H:%M:%S')
