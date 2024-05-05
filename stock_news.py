@@ -13,9 +13,9 @@ def display_stock_news(ticker):
         # Retrieve news related to the stock
         stock_news = stock.news
 
-        if not stock_news:  # Check if news is empty
+        if not stock_news or isinstance(stock_news, str) and stock_news.strip() == "":  # Check if news is empty or a blank string
             st.warning("No news available for this ticker.")
-            logging.info(f"No news data returned for ticker {ticker}.")
+            logging.info(f"No news data or blank response returned for ticker {ticker}.")
             return
         
         # Display each news item in the Streamlit app
@@ -36,4 +36,3 @@ def display_stock_news(ticker):
     except Exception as e:
         st.error(f"Failed to load stock news: {e}")
         logging.error(f"Unexpected error fetching stock news for {ticker}: {e}")
-
