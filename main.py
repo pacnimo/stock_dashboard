@@ -1,7 +1,6 @@
 import streamlit as st
 import yfinance as yf
 import plotly.express as px
-import pandas as pd
 
 # Set page configuration with page title, layout, and initial sidebar state
 st.set_page_config(
