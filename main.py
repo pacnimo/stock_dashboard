@@ -4,6 +4,7 @@ from company_info import display_company_info
 from earnings import display_earnings_chart
 from stock_price import display_stock_price_chart
 from financial_statements import display_financial_statements
+from stock_news import display_stock_news  # Importing the new function
 
 # Set page configuration with page title, layout and initial sidebar state
 st.set_page_config(
@@ -11,8 +12,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://www.example.com/help',
-        'Report a bug': 'https://www.example.com/report',
         'About': "Free Stock Analytics Dashboard is a web application for visualizing stock data including company information, financial statements, earnings, and stock price movements. Built with Streamlit, it utilizes data from Yahoo Finance API."
     }
 )
@@ -37,8 +36,12 @@ with col2:
     display_earnings_chart(ticker)
 
 # Define the second row
-col4 = st.columns(2)
+col3, col4 = st.columns(2)
 
+with col3:
+    # Display "Stock News"
+    st.header(f"Latest {ticker} News")
+    display_stock_news(ticker)
 
 with col4:
     # Display "Price Graph (5 Years)" in the main section
@@ -54,4 +57,3 @@ st.markdown("""
 
 _Free Stock Analytics Dashboard is not responsible for any trading losses incurred by users of this application._
 """)
-
