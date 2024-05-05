@@ -3,3 +3,4 @@ yfinance
 panda
 pandas
 plotly
+plotly.express
