@@ -1,9 +1,5 @@
 import yfinance as yf
 import streamlit as st
-import logging
-
-# Initialize logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def display_stock_news(ticker):
     stock = yf.Ticker(ticker)
