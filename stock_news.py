@@ -3,14 +3,21 @@ import streamlit as st
 from datetime import datetime
 import logging
 
+# Initialize logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 def display_stock_news(ticker):
-    logging.basicConfig(level=logging.INFO)
     stock = yf.Ticker(ticker)
     
     try:
         # Retrieve news related to the stock
         stock_news = stock.news
 
+        if not stock_news:  # Check if news is empty
+            st.warning("No news available for this ticker.")
+            logging.info(f"No news data returned for ticker {ticker}.")
+            return
+        
         # Display each news item in the Streamlit app
         for news in stock_news:
             st.subheader(news.get('title', 'No title available'))  # Safely get the news headline
@@ -22,7 +29,11 @@ def display_stock_news(ticker):
                 date = datetime.fromtimestamp(date).strftime('%Y-%m-%d %H:%M:%S')
             st.write("Date:", date if date else 'No date available')
             st.markdown("-------------------------------------------------------")
-    
+
+    except ValueError as e:
+        st.error(f"Failed to load stock news due to a value error: {e}")
+        logging.error(f"Value error fetching stock news for {ticker}: {e}")
     except Exception as e:
-        st.error("Failed to load stock news: " + str(e))
-        logging.error("Error fetching stock news for {}: {}".format(ticker, e))
+        st.error(f"Failed to load stock news: {e}")
+        logging.error(f"Unexpected error fetching stock news for {ticker}: {e}")
+
