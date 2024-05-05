@@ -5,3 +5,4 @@ pandas==2.2.2
 pandas-datareader==0.10.0
 pandas-stubs==2.1.4.231218
 plotly==5.20.0
+json
