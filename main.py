@@ -1,6 +1,7 @@
 import streamlit as st
 import yfinance as yf
 import plotly.express as px
+import pandas as pd
 
 # Set page configuration with page title, layout, and initial sidebar state
 st.set_page_config(
@@ -51,7 +52,6 @@ def display_company_info(ticker):
     long_business_summary = info.get('longBusinessSummary', 'No information available')
     
     # Display the longBusinessSummary
-    st.subheader(f"{ticker} Company Info")
     st.write(long_business_summary)
 
 
