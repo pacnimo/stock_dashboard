@@ -1,6 +1,4 @@
 streamlit
 yfinance
-panda
 pandas
 plotly
-yahooquery
