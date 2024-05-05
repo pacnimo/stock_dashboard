@@ -38,12 +38,8 @@ with col2:
     display_earnings_chart(ticker)
 
 # Define the second row
-col3, col4 = st.columns(2)
+col4 = st.columns(2)
 
-with col3:
-    # Display "Stock News"
-    st.header(f"Latest {ticker} News")
-    display_stock_news(ticker)
 
 with col4:
     # Display "Price Graph (5 Years)" in the main section
