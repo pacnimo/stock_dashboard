@@ -4,7 +4,6 @@ from company_info import display_company_info
 from earnings import display_earnings_chart
 from stock_price import display_stock_price_chart
 from financial_statements import display_financial_statements
-from stock_news import display_stock_news  # Importing the new function
 
 # Set page configuration with page title, layout and initial sidebar state
 st.set_page_config(
