@@ -145,3 +145,13 @@ with col3:
 with col4:
     # Display Stock News in the sidebar for the entered ticker
     display_stock_news_in_sidebar(ticker)
+
+# Add footer with GitHub repo link and license information
+st.markdown("""
+---
+**GitHub Repository:** [Link to GitHub](https://github.com/pacnimo/stock_dashboard)
+
+**License:** Apache 2.0
+
+_Free Stock Analytics Dashboard is not responsible for any trading losses incurred by users of this application._
+""")
