@@ -50,6 +50,3 @@ This project is licensed under the Apache License 2.0 - see the LICENSE file for
 ## Support
 
 For help and support, please open an issue in the GitHub repository or reach out via the support link.
-
-## TRY IT OUT
-https://stock-analytics-dashboard.streamlit.app/
